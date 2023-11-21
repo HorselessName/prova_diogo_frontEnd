@@ -1,0 +1,65 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Cadastrar Tarefa</mat-card-title>
+    <mat-card-subtitle>API: https://localhost:7015/api/categoria/listar </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field class="input" id="status">
+      <mat-label>Status</mat-label>
+      <input
+        placeholder="True ou False"
+        matInput
+        type="text"
+        [(ngModel)]="status"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="input" id="titulo">
+      <mat-label>Titulo</mat-label>
+      <input
+        placeholder="Titulo da Tarefa"
+        matInput
+        type="text"
+        [(ngModel)]="titulo"
+      />
+
+    </mat-form-field>
+
+    <mat-form-field class="input" id="descricao">
+      <mat-label>Descrição</mat-label>
+      <input
+        placeholder="Descrição da Tarefa"
+        matInput
+        type="text"
+        [(ngModel)]="descricao"
+      />
+
+    </mat-form-field>
+
+    <!-- Opcoes de Categoria Disponivel -->
+    <mat-form-field class="input" id="categoria">
+      <mat-label>Categoria</mat-label>
+      <mat-select [(ngModel)]="categoriaId">
+
+        <!-- Não deixou selecionar a opção. Clico e não faz nada. -->
+        <mat-option
+          *ngFor="let categoria of categorias"
+          [value]="categoria['categoriaId']"
+        >
+          {{ categoria["nome"] }}
+
+        </mat-option>
+
+      </mat-select>
+
+    </mat-form-field>
+
+
+
+  </mat-card-content>
+  <mat-card-actions>
+    <button color="warn" mat-stroked-button (click)="novaTarefa()">
+      Cadastrar
+    </button>
+  </mat-card-actions>
+</mat-card>
